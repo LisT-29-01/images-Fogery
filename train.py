@@ -6,8 +6,9 @@ import argparse
 from keras.optimizers import Adam, SGD
 import keras.backend as K
 from keras.callbacks import LearningRateScheduler, TensorBoard, ModelCheckpoint, Callback
+
 parser = argparse.ArgumentParser()
-parser.add_argument('--input_size', tpye=int, default=512)    #input size for training
+parser.add_argument('--input_size', type=int, default=512)    #input size for training
 parser.add_argument('--batth_size', type=int, default=32)   #batch size for training
 parser.add_argument('--init_learning_rate',type=float, default=0.0001)    #initial learning rate
 parser.add_argument('--lr_decay_rate',type=float, default=0.94)     #decay rate for the learning rate
