@@ -1,7 +1,9 @@
 from model import *
+from data_processor import *
 
+import tensorflow as tf
+import numpy as np
 import os
-import data_processor
 import argparse
 from keras.optimizers import Adam, SGD
 import keras.backend as K
@@ -9,16 +11,16 @@ from keras.callbacks import LearningRateScheduler, TensorBoard, ModelCheckpoint,
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--input_size', type=int, default=512)    #input size for training
-parser.add_argument('--batth_size', type=int, default=32)   #batch size for training
+parser.add_argument('--batch_size', type=int, default=32)   #batch size for training
 parser.add_argument('--init_learning_rate',type=float, default=0.0001)    #initial learning rate
 parser.add_argument('--lr_decay_rate',type=float, default=0.94)     #decay rate for the learning rate
 parser.add_argument('--lr_decay_steps',type=int,default=130)    #nums of the steps after which the learning rate is decayed by decay rate
 parser.add_argument('--max_epochs', type=int, default=800) # maximum number of epochs
 parser.add_argument('--real_training_data_path', type=str, default='')   # path to real training data
 parser.add_argument('--fake_training_data_path', type=str, default='')   # path to fake training data
-parser.add_argument('--max_epochs', type=int, default=100)
 parser.add_argument('--checkpoint_path', type=str, default='tmp/image_classification') # path to a directory to save model checkpoints during training
 parser.add_argument('--last_epoch_train',type=int,default=0)    #last epoch has trained
+parser.add_argument('--save_checkpoint_epochs', type=int, default=5) # period at which checkpoints are saved (defaults to every 5 epochs)
 FLAGS = parser.parse_args()
 
 lastEpoch = FLAGS.last_epoch_train

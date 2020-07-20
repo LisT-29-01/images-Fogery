@@ -7,7 +7,7 @@ def get_image(path):
     for i in file:
         if i.split('.')[0] == '':
             continue
-        fn.add(path + i.split('.')[0] + '.png')
+        fn.add(path + '/' + i.split('.')[0] + '.png')
     return list(fn)
 
 def generator(FLAGS):

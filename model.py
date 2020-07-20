@@ -9,7 +9,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Flatten, Dropout
 
 class model_classification:
-    def _init_(self,input = 512):
+    def __init__(self,input = 512):
         input_image = Input(shape=[512,512,3],name="input_image")
 
         resnet = ResNet50(input_tensor=input_image,weights='imagenet',include_top=False,pooling=None)
